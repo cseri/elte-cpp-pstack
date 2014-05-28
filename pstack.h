@@ -24,6 +24,11 @@ public:
     return (--m.end())->second.back();
   }
 
+  T& top()
+  {
+    return (--m.end())->second.back();
+  }
+
   std::size_t size(const Prio& prio) const
   {
     map_c_it it = m.find(prio);
@@ -32,6 +37,16 @@ public:
     } else {
       return it->second.size();
     }
+  }
+
+  std::size_t size() const
+  {
+    std::size_t sum = 0;
+    for (map_c_it it = m.begin(); it != m.end(); ++it)
+    {
+      sum += it->second.size();
+    }
+    return sum;
   }
 
 };

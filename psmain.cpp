@@ -33,7 +33,7 @@ int main()
   }
   // */
 
-  /* 3-as
+  /* 3-as */
   si.top() = 5;
   if (5 == si.top())
     yourMark = csi.size();
