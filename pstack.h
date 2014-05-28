@@ -5,10 +5,10 @@
 #include <vector>
 #include <functional>
 
-template <typename T, typename Prio = int>
+template <typename T, typename Prio = int, typename Comp = std::less<Prio> >
 class priority_stack
 {
-  std::map<Prio, std::vector<T> > m;
+  std::map<Prio, std::vector<T>, Comp> m;
 
   typedef typename std::map<Prio, std::vector<T> >::const_iterator map_c_it;
 

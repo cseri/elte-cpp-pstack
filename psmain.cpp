@@ -54,7 +54,7 @@ int main()
   }
   // */
 
-  /* 5-os
+  /* 5-os */
   priority_stack<int, std::string, StringSizeLess> strst;
   strst.push("abcdg", 5);
   strst.push("dfg", 4);
