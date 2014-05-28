@@ -39,7 +39,7 @@ int main()
     yourMark = csi.size();
   // */
 
-  /* 4-es
+  /* 4-es */
   si.pop();
   std::cout << si.top() << std::endl;
   si.pop();

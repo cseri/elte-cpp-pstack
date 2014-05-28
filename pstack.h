@@ -49,6 +49,14 @@ public:
     return sum;
   }
 
+  void pop()
+  {
+    (--m.end())->second.pop_back();
+    if ((--m.end())->second.empty()) {
+      m.erase(--m.end());
+    }
+  }
+
 };
 
 #endif // PSTACK_H_
