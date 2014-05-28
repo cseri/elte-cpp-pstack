@@ -12,6 +12,14 @@ struct StringSizeLess
   }
 };
 
+struct Print
+{
+  void operator()(const int& i) const
+  {
+    std::cout << i << " ";
+  }
+};
+
 const int max = 1000;
 
 int main()
@@ -64,5 +72,24 @@ int main()
   std::cout << "Your mark is " << yourMark
             << std::endl;
 
+  /* Iterator */
+  std::cout << "Iterator test: " << std::endl;
+
+  for (priority_stack<int>::const_iterator it =
+      csi.begin(); it != csi.end(); ++it) {
+    std::cout << *it << " ";
+  }
+  std::cout << std::endl;
+
+  for (priority_stack<int, std::string, StringSizeLess>::const_iterator it =
+      strst.begin(); it != strst.end(); ++it) {
+    std::cout << *it << " ";
+  }
+  std::cout << std::endl;
+
+  std::for_each(strst.begin(), strst.end(), Print());
+  std::cout << std::endl;
+  // */
+ 
   return 0;
 }

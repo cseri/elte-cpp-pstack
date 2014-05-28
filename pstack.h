@@ -59,6 +59,67 @@ public:
     }
   }
 
+  class const_iterator : public std::iterator<std::forward_iterator_tag, T>
+  {
+    typedef typename std::vector<T>::const_reverse_iterator vec_c_rev_it;
+
+    map_c_it mapit;
+    map_c_it mapend;
+    vec_c_rev_it stackit;
+
+  public:
+    const_iterator(map_c_it mapit, map_c_it mapend) :
+      mapit(mapit), mapend(mapend)
+    {
+      if (mapit != mapend) {
+        stackit = mapit->second.rbegin();
+      }
+    }
+
+    bool operator==(const const_iterator &o) const
+    {
+      if (mapit != mapend) {
+        return mapit == o.mapit && stackit == o.stackit;
+      } else {
+        return mapit == o.mapit;
+      }
+    }
+
+    bool operator!=(const const_iterator &o) const
+    {
+      return !(*this == o);
+    }
+
+    const T &operator*() const
+    {
+      return *stackit;
+    }
+
+    const_iterator &operator++()
+    {
+      ++stackit;
+      if (stackit == mapit->second.rend()) {
+        ++mapit;
+        if (mapit != mapend) {
+          stackit = mapit->second.rbegin();
+        }
+      }
+      return *this;
+    }
+
+  };
+
+
+  const_iterator begin() const
+  {
+    return const_iterator(m.begin(), m.end());
+  }
+
+  const_iterator end() const
+  {
+    return const_iterator(m.end(), m.end());
+  }
+
 };
 
 #endif // PSTACK_H_
