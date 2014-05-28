@@ -14,6 +14,8 @@ class priority_stack
 
 public:
 
+  priority_stack(Comp comp = Comp()) : m(comp) { }
+
   void push(const Prio& prio, const T& e)
   {
     m[prio].push_back(e);
