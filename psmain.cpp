@@ -17,7 +17,7 @@ const int max = 1000;
 int main()
 {
   int yourMark = 1;
-  /* 2-es
+  /* 2-es */
   priority_stack<double> sd;
   for(int i = 0; i < max; ++i)
     sd.push(i, 6.7);
